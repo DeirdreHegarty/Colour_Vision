@@ -2,3 +2,4 @@
 *.DS_Store
 .venv
 uploads
+.python-version
