@@ -37,10 +37,20 @@ Werkzeug (0.14.1)
 
 ```
 
-*to run in debug mode*
+*To Run (python 3.7.1)*
+
+#### Terminal ####
 ```bash
 
-cd Colour_Vision
-FLASK_APP=main.py FLASK_DEBUG=1 flask run
+python run.py 
 
+```
+#### IPython #### 
+(recommend using IPython --pdb)
+```python 
+run run
+```
+or
+```python 
+run run.py
 ```
