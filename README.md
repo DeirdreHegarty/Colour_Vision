@@ -22,6 +22,12 @@ source .venv/bin/activate
 pip3 install flask
 pip3 install flask_dropzone 
 pip3 install flask_uploads
+pip3 install pyocr
+pip3 install wand
+pip3 install tesserocr
+pip3 install pytesseract
+pip3 install pillow
+pip3 install opencv-python
 
 # currently installed in virtual env
 Click (7.0)
@@ -36,6 +42,20 @@ setuptools (39.0.1)
 Werkzeug (0.14.1)
 
 ```
+
+*install tesseract on Mac (using brew):*
+```bash
+
+brew install imagemagick@6
+ln -s /usr/local/Cellar/imagemagick@6/6.9.10-14/lib/libMagickWand-6.Q16.6.dylib  /usr/local/lib/libMagickWand.dylib
+
+xcode-select --install
+brew install tesseract --all-languages
+
+brew install ghostscript
+
+```
+
 
 *To Run (python 3.7.1)*
 
