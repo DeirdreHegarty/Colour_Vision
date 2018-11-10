@@ -1,8 +1,8 @@
-from flask import Flask, request, render_template, session, url_for, redirect
+from flask import Flask, request, render_template, session, url_for, redirect, send_from_directory
 from flask_uploads import UploadSet, configure_uploads, IMAGES, DOCUMENTS
 from colour_vision import app
 import os.path
-
+from colour_vision.extract_text import retrieveTextFromImage
 
 
 
@@ -29,13 +29,14 @@ def upload():
 	if request.method == 'POST':
 		file_obj = request.files
 		for f in file_obj:
-
 			file = request.files.get(f)
+			print(file)
 			app.logger.debug(file.filename)
 			
 			# save the file & append file urls
 			filename = files.save(file, name=file.filename)
 			file_urls.append(files.url(filename))
+			config(file.filename)
 
 		session['file_urls'] = file_urls	
 		
@@ -65,3 +66,16 @@ def f_type(filename):
 	"""	
 	ext = os.path.splitext(filename)[1]
 	return ext
+
+def config(filename):
+	"""given some configuration, apply to file
+	"""
+	if f_type(filename) == ".jpg":
+		text = retrieveTextFromImage("../uploads/"+filename)
+		text_file = open("Output.txt", "w")
+		text_file.write(text)
+		text_file.close()
+		send_from_directory(directory='./', filename='Output.txt', as_attachment=True)
+
+		print(text)
+
