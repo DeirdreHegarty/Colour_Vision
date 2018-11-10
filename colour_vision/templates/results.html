@@ -3,16 +3,19 @@
 
 {% block upload %}
 <br/>
-<a href="{{ url_for('upload') }}"><button>Back</button></a>
-<form method="get" action="/results/{{file_path}}">
-    <button type="submit">Download</button>
-</form>
-<ul id='resultsList'>
-{% for file_url in file_urls %}
-    <li><img style="height: 150px" src="{{ file_url }}"></li>
-{% endfor %}
-</ul>
-
+<div class='row'>
+	<a href="{{ url_for('upload') }}" style='float:left; margin-right:20px;'><button>Back</button></a>
+	<form style='float:left;' method="get" action="/results/{{file_path}}">
+	    <button type="submit" style=' background:blue;'>Download</button>
+	</form>
+</div>
+<div class='row' style='margin-top:40px;'>
+	<ul id='resultsList'>
+	{% for file_url in file_urls %}
+	    <li><img style="height: 300px" src="{{ file_url }}"></li>
+	{% endfor %}
+	</ul>
+</div>
 
 {% endblock upload%}
 
