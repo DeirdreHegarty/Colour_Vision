@@ -3,7 +3,7 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES, DOCUMENTS
 from colour_vision import app
 import os.path
 from colour_vision.extract_text import retrieveTextFromImage
-
+import time
 
 
 files = UploadSet('files', 
@@ -58,13 +58,13 @@ def results():
 	file_urls = session['file_urls']
 	session.pop('file_urls', None)
 	print(file_urls)
-	config_thing(session['filename'])
+	of = config_thing(session['filename'])
 	
-	return render_template('results.html',file_urls=file_urls , file_path = 'Output.txt')
+	return render_template('results.html',file_urls=file_urls , file_path = of )
 
 @app.route('/results/<path:filename>')
 def download_file(filename):
-	import time
+	
 	time.sleep(5)
 	return send_from_directory(directory="./../downloads", filename=filename, as_attachment=True)
 	 
@@ -83,9 +83,11 @@ def config_thing(filename):
 	"""
 	if f_type(filename) == ".jpg":
 		text = retrieveTextFromImage(os.getcwd()+"/uploads/"+filename)
-		text_file = open(os.getcwd()+"/downloads/"+"Output.txt", "w")
+		text_file = open(os.getcwd()+"/downloads/"+os.path.splitext(filename)[0]+"_Output.txt", "w")
 		text_file.write(text)
 		text_file.close()
+		time.sleep(10)
+	return os.path.splitext(filename)[0]+"_Output.txt"
 		# return send_from_directory(directory="./", filename='extract_text.py', as_attachment=True)
 		# download_file(filename)
 
