@@ -36,12 +36,14 @@ def upload():
 			# save the file & append file urls
 			filename = files.save(file, name=file.filename)
 			file_urls.append(files.url(filename))
+			session['filename']=filename
+
 			#config(file.filename)
 
 		session['file_urls'] = file_urls	
 		
-		config_thing(file.filename)
-		
+			
+	
 	return render_template('upload.html', title='upload')
 
 
@@ -55,8 +57,17 @@ def results():
 	# set the file_urls and remove the session variable
 	file_urls = session['file_urls']
 	session.pop('file_urls', None)
+	print(file_urls)
+	config_thing(session['filename'])
+	
+	return render_template('results.html',file_urls=file_urls , file_path = 'Output.txt')
 
-	return render_template('results.html',file_urls=file_urls)
+@app.route('/results/<path:filename>')
+def download_file(filename):
+	import time
+	time.sleep(5)
+	return send_from_directory(directory="./../downloads", filename=filename, as_attachment=True)
+	 
 
 def f_type(filename):
 	"""returns the file type, for example .png, .pdf ... etc
@@ -75,7 +86,6 @@ def config_thing(filename):
 		text_file = open(os.getcwd()+"/downloads/"+"Output.txt", "w")
 		text_file.write(text)
 		text_file.close()
-		#send_from_directory(directory='/home/kevin/Documents/colour_vision/a/Colour_Vision/Output.txt', filename='Output.txt', as_attachment=True)
-
-		print(text)
+		# return send_from_directory(directory="./", filename='extract_text.py', as_attachment=True)
+		# download_file(filename)
 
