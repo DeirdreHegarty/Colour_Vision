@@ -66,8 +66,9 @@ def results():
 
 @app.route('/results/<path:filename>')
 def download_file(filename):
+	print(filename)
 	
-	time.sleep(5)
+	# time.sleep(5)
 	return send_from_directory(directory="./../downloads", filename=filename, as_attachment=True)
 	 
 
@@ -85,11 +86,11 @@ def config_thing(filename):
 	"""
 	if f_type(filename) == ".jpg":
 		text = retrieveTextFromImage(os.getcwd()+"/uploads/"+filename)
-		convertToPDF(text)
+		pdf_file = convertToPDF(text)
 		text_file = open(os.getcwd()+"/downloads/"+os.path.splitext(filename)[0]+"_Output.txt", "w")
 		text_file.write(text)
 		text_file.close()
-		time.sleep(10)
-	return os.path.splitext(filename)[0]+"_Output.txt"
+		# time.sleep(10)
+	return pdf_file.strip()
 
 

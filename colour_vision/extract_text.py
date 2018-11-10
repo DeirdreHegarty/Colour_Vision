@@ -69,7 +69,8 @@ def convertToPDF(text_in):
 	# for line in text_in:
 	pdf.multi_cell(0,20, str(text_in.encode('utf-8')),fill=True)
 
-	pdf.output('out.pdf', 'F')
+	pdf.output(os.getcwd()+'/downloads/out.pdf', 'F')
+	return 'out.pdf'
 
 
 
