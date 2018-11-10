@@ -1,7 +1,20 @@
 {% extends 'skeleton.html' %}
 
 {% block upload %}
-	<h1>UPLOAD</h1>
-	{{ dropzone.create(action_view='upload') }}
-
+<div class='row'>
+	<div class='row'>
+		<div id='col-info' class='col-md-6'>
+			<h3>We aim to ensure that text-based material takes into account the visual stress experienced
+		by some dyslexic people.</h3>
+			<ul>
+				<li>facilitate ease of reading</li>
+				<li>convert content to a more user freindly format</li>
+				<li>can extract text from photographs of documents</li>
+			</ul>
+		</div>
+		<div id='col-dropzone' class='col-md-6'>
+			{{ dropzone.create(action_view='upload') }}
+		</div>
+	</div>
+</div>
 {% endblock upload%}

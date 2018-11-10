@@ -3,15 +3,57 @@
 	<title>Object Detection</title>
 	<!-- dropzone -->
     {{ dropzone.load() }}
-    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
-
+    {{ dropzone.style('border: 7px dashed #F9690E; margin: 10%; min-height: 400px;') }}
+	<meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style type="text/css" src="{{ url_for('static', filename='css/app.css') }}">
+	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+	body{
+		background: #D2D7D3;
+	}
+	.navbar{
+		background: #262626 !important;
+	}
+	.navbar-brand{
+		margin-left: 2%;
+		font-family: "Comic Sans MS", cursive, sans-serif;
+		color: white !important;
+		font-weight: bold;
+		font-size: 30px;
+	}
+	#col-info{
+		font-family: "Tahoma", Geneva, sans-serif;
+		margin-top: 5%;
+	}
+	#col-info ul{
+		list-style-type: circle;
+		margin-top: 10%;
+		font-size:20px;
+		line-height: 40px;
+
+	}
+	#col-info h3{
+		background: #eaeaff;
+		padding:20px;
+		font-weight: bold;
+		border-radius:4px;
+	}
+	.dz-default{
+		font-family: "Tahoma", Geneva, sans-serif;
+		font-size:30px;
+		padding-top: 20%;
+		font-weight:  bold;
+	}
+	</style>
 </head>
 <body>
+	<nav class="navbar navbar-light bg-light">
+	  <a class="navbar-brand" href="#"><span style='font-size:40px;'>😊</span> <span style='font-size:40px'>C</span>lear<span style='font-size:30px'>T</span>ext</a>
+	</nav>
 	<div class="container">
-
 		{% block upload %}{% endblock %}
 	</div>
 </body>
