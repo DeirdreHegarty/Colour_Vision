@@ -72,7 +72,7 @@ def config_thing(filename):
 	"""
 	if f_type(filename) == ".jpg":
 		text = retrieveTextFromImage(os.getcwd()+"/uploads/"+filename)
-		text_file = open("Output.txt", "w")
+		text_file = open(os.getcwd()+"/downloads/"+"Output.txt", "w")
 		text_file.write(text)
 		text_file.close()
 		#send_from_directory(directory='/home/kevin/Documents/colour_vision/a/Colour_Vision/Output.txt', filename='Output.txt', as_attachment=True)
