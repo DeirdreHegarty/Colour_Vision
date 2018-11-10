@@ -3,3 +3,4 @@
 .venv
 uploads
 .python-version
+.vscode

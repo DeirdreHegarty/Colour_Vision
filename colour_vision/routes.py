@@ -1,6 +1,10 @@
 from flask import Flask, request, render_template, session, url_for, redirect
 from flask_uploads import UploadSet, configure_uploads, IMAGES, DOCUMENTS
 from colour_vision import app
+import os.path
+
+
+
 
 files = UploadSet('files', 
 				 ['jpg','jpeg','png','doc', 'docx', 'pdf'])	
@@ -17,14 +21,13 @@ def upload():
 	
 	# uploaded file urls
 	file_urls = session['file_urls']
-
+	
 	# clear any unsubmitted files from previous attempts
 	session.pop('file_urls', None)
 
 	# file upload from Dropzone
 	if request.method == 'POST':
 		file_obj = request.files
-			
 		for f in file_obj:
 
 			file = request.files.get(f)
@@ -35,6 +38,8 @@ def upload():
 			file_urls.append(files.url(filename))
 
 		session['file_urls'] = file_urls	
+		
+		
 		
 	return render_template('upload.html', title='upload')
 
@@ -52,3 +57,11 @@ def results():
 
 	return render_template('results.html',file_urls=file_urls)
 
+def f_type(filename):
+	"""returns the file type, for example .png, .pdf ... etc
+	
+	Arguments:
+		filename {str} -- full file name something.ext
+	"""	
+	ext = os.path.splitext(filename)[1]
+	return ext
