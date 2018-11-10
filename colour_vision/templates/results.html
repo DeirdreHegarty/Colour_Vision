@@ -2,9 +2,9 @@
 {% set active_page = "results" %}
 
 {% block upload %}
-<h1>RESULTS</h1>
-<a href="{{ url_for('upload') }}">Back</a><p>
-<ul>
+<br/>
+<a href="{{ url_for('upload') }}"><button>Back</button></a>
+<ul id='resultsList'>
 {% for file_url in file_urls %}
     <li><img style="height: 150px" src="{{ file_url }}"></li>
 {% endfor %}
