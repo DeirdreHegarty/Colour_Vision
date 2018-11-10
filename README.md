@@ -28,6 +28,7 @@ pip3 install tesserocr
 pip3 install pytesseract
 pip3 install pillow
 pip3 install opencv-python
+pip3 install fpdf
 
 # currently installed in virtual env
 Click (7.0)

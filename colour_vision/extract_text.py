@@ -6,6 +6,7 @@ import io
 import cv2
 import os
 import pytesseract
+from fpdf import FPDF
 
 def retrieveTextFromPDF(PDF_in):
 
@@ -58,4 +59,17 @@ def retrieveTextFromImage(image_in):
 	os.remove(filename)
 
 	return text
+
+def convertToPDF(text_in):
+	pdf = FPDF()
+	pdf.add_page()
+	pdf.set_font('Arial', 'B', 16)
+	pdf.cell(40, 10, text_in)
+	pdf.output('tuto1.pdf', 'F')
+
+
+
+
+
+
 
