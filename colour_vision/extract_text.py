@@ -36,8 +36,8 @@ def retrieveTextFromPDF(PDF_in):
 	return txt
 
 def retrieveTextFromImage(image_in):
+	print(image_in)
 	# load the example image and convert it to grayscale
-	image_in ="/home/kevin/Pictures/maxresdefault.jpg"
 	image = cv2.imread(image_in)
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 	 

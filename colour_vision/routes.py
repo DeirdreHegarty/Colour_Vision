@@ -36,11 +36,11 @@ def upload():
 			# save the file & append file urls
 			filename = files.save(file, name=file.filename)
 			file_urls.append(files.url(filename))
-			config(file.filename)
+			#config(file.filename)
 
 		session['file_urls'] = file_urls	
 		
-		
+		config_thing(file.filename)
 		
 	return render_template('upload.html', title='upload')
 
@@ -67,15 +67,15 @@ def f_type(filename):
 	ext = os.path.splitext(filename)[1]
 	return ext
 
-def config(filename):
+def config_thing(filename):
 	"""given some configuration, apply to file
 	"""
 	if f_type(filename) == ".jpg":
-		text = retrieveTextFromImage("../uploads/"+filename)
+		text = retrieveTextFromImage(os.getcwd()+"/uploads/"+filename)
 		text_file = open("Output.txt", "w")
 		text_file.write(text)
 		text_file.close()
-		send_from_directory(directory='./', filename='Output.txt', as_attachment=True)
+		#send_from_directory(directory='/home/kevin/Documents/colour_vision/a/Colour_Vision/Output.txt', filename='Output.txt', as_attachment=True)
 
 		print(text)
 
