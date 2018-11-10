@@ -61,12 +61,15 @@ def retrieveTextFromImage(image_in):
 	return text
 
 def convertToPDF(text_in):
+	print(text_in)
 	pdf = FPDF()
 	pdf.add_page()
 	pdf.set_font('Arial', 'B', 16)
-	pdf.cell(40, 10, text_in)
-	pdf.output('tuto1.pdf', 'F')
+	pdf.set_fill_color(51, 153, 255)
+	# for line in text_in:
+	pdf.multi_cell(0,20, str(text_in.encode('utf-8')),fill=True)
 
+	pdf.output('out.pdf', 'F')
 
 
 

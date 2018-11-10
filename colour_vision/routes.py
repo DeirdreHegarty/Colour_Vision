@@ -4,6 +4,8 @@ from colour_vision import app
 import os.path
 from colour_vision.extract_text import retrieveTextFromImage
 import time
+from colour_vision.extract_text import convertToPDF
+
 
 
 files = UploadSet('files', 
@@ -83,11 +85,11 @@ def config_thing(filename):
 	"""
 	if f_type(filename) == ".jpg":
 		text = retrieveTextFromImage(os.getcwd()+"/uploads/"+filename)
+		convertToPDF(text)
 		text_file = open(os.getcwd()+"/downloads/"+os.path.splitext(filename)[0]+"_Output.txt", "w")
 		text_file.write(text)
 		text_file.close()
 		time.sleep(10)
 	return os.path.splitext(filename)[0]+"_Output.txt"
-		# return send_from_directory(directory="./", filename='extract_text.py', as_attachment=True)
-		# download_file(filename)
+
 
